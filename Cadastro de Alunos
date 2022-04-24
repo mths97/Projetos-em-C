@@ -1,0 +1,122 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+struct Alunos
+{
+    char nome [30];
+    float notas [4];
+
+} typedef alunos;
+
+alunos cadastrar (alunos[],int);
+void visualizar (alunos[],int);
+alunos deletar (alunos[],int);
+alunos atualizar (alunos[],int);
+
+
+int main()
+{
+    alunos A[30];
+    int opcao, codigo;
+
+    setlocale (LC_ALL,"portuguese");
+    do {
+    system ("cls");
+    printf ("O que deseja fazer?\n1-Cadastrar\n2-Visualizar\n3-Deletar\n4-Atualizar\n0-Sair");
+    scanf ("\n%d", &opcao);
+
+    if (opcao!=0)
+        {
+            printf ("\nDigite código do aluno: ");
+            scanf ("\n%d", &codigo);
+
+            if (opcao==1)
+            {
+                A[codigo] = cadastrar (A, codigo);
+            }
+            if (opcao==2)
+            {
+                visualizar (A, codigo);
+            }
+            if (opcao==3)
+            {
+                A[codigo] = deletar (A, codigo);
+            }
+            if (opcao==4)
+            {
+                A[codigo] = atualizar (A, codigo);
+            }
+        }
+    } while (opcao!=0);
+
+    return 0;
+}
+
+alunos cadastrar (alunos A[], int codigo)
+{
+    system ("cls");
+    printf ("Digite nome: ");
+    scanf ("%s", A[codigo].nome);
+    printf ("Digite nota 1: ");
+    scanf ("%f", &A[codigo].notas[0]);
+    printf ("Digite nota 2: ");
+    scanf ("%f", &A[codigo].notas[1]);
+    printf ("Digite nota 3: ");
+    scanf ("%f", &A[codigo].notas[2]);
+    printf ("\n");
+    system("pause");
+
+    return A[codigo];
+}
+
+void visualizar (alunos A[], int codigo)
+{
+    system("cls");
+    printf ("Nome: %s", A[codigo].nome);
+    printf ("\nNota 1: %2.f", A[codigo].notas[0]);
+    printf ("\nNota 2: %2.f", A[codigo].notas[1]);
+    printf ("\nNota 3: %2.f", A[codigo].notas[2]);
+    printf ("\n");
+    system ("pause");
+}
+
+alunos deletar (alunos A[], int codigo)
+{
+    strcpy (A[codigo].nome,"");
+    A[codigo].notas[0] = 0;
+    A[codigo].notas[1] = 0;
+    A[codigo].notas[2] = 0;
+    printf ("\nAluno removido do sistema!");
+    printf ("\n");
+    system ("pause");
+    return A[codigo];
+}
+
+alunos atualizar (alunos A[], int codigo)
+{
+    int opcao;
+    printf ("O que deseja atualizar?\n1-Nome\n2-Notas");
+    scanf ("%d", &opcao);
+
+    if (opcao==1)
+    {
+        printf ("\nDigite nome: ");
+        scanf ("%s", A[codigo].nome);
+    }
+    if (opcao==2)
+    {
+        printf ("\nDigite as notas: ");
+        printf ("\nNota 1: ");
+        scanf ("%f", &A[codigo].notas[0]);
+        printf ("\nNota 2: ");
+        scanf ("%f", &A[codigo].notas[1]);
+        printf ("\nNota 3: ");
+        scanf ("%f", &A[codigo].notas[2]);
+    }
+
+    printf ("Aluno atualizado!");
+    printf ("\n");
+    system ("pause");
+    return A[codigo];
+}
