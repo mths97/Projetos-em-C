@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main()
+{
+    int opcao, senha, continuar;
+    float deposito, saque, saldo=500;
+
+    setlocale (LC_ALL,"portuguese");
+    do {
+    system("cls");
+    printf ("Bem-vindo(a)!");
+    printf ("\nO que deseja fazer?\n1-Depósito\n2-Saque\n3-Verificar Saldo");
+    scanf ("%d", &opcao);
+
+    printf ("Digite a senha: ");
+    scanf ("%d", &senha);
+
+    if (senha==123456)
+    {
+        if (opcao==1)
+        {
+            system("cls");
+            printf ("Qual valor deseja depositar?");
+            scanf ("%f", &deposito);
+
+            saldo += deposito;
+
+            printf ("\nValor depositado!");
+            printf ("\nSeu saldo é: %2.f", saldo);
+
+
+        }
+        if (opcao==2)
+        {
+            system("cls");
+            printf ("Qual valor deseja sacar?");
+            scanf ("%f", &saque);
+
+            saldo -= saque;
+
+            printf ("\nValor sacado!");
+            printf ("\nSeu saldo é: %2.f", saldo);
+
+        }
+        if (opcao==3)
+        {
+            system("cls");
+            printf ("Seu saldo é: %2.f", saldo);
+
+        }
+    } else
+        {
+            printf ("Senha inválida!");
+
+        }
+
+        printf ("\nDeseja continuar?\n1-Sim\n2-Não");
+        scanf ("%d", &continuar);
+
+    } while (continuar!=2);
+
+    return 0;
+}
