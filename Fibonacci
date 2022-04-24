@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i, n, t1=0, t2=1, proximo;
+
+    printf ("SEQUENCIA DE FIBONACCI");
+    printf ("\nIndique a quantidade de termos: \n");
+    scanf ("%d", &n);
+
+    for (i=1; i<=n; i++)
+    {
+        printf ("%d, ", t1);
+        proximo = t1 + t2;
+        t1 = t2;
+        t2 = proximo;
+}
+
+return 0;
+}
